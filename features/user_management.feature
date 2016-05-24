@@ -4,4 +4,8 @@ Feature:  As a visitor
 
 Scenario: Allows a visitor to access a registration page
     Given I am on the "home page"
-    Then I should see a registration button.
+    Then I should see a "Sign up" button.
+
+Scenario: As a visitor
+    Given I am on the "home page"
+    Then I should see a 'Login' button.
