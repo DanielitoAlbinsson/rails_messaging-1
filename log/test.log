@@ -13,3 +13,51 @@ Processing by WelcomeController#index as HTML
   Rendered layouts/_nav.html.erb (10.4ms)
 Completed 200 OK in 15005ms (Views: 14975.3ms | ActiveRecord: 0.0ms)
   [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[36m (184.1ms)[0m  [1mDROP DATABASE IF EXISTS "rails_messaging_test"[0m
+  [1m[35m (1499.4ms)[0m  CREATE DATABASE "rails_messaging_test" ENCODING = 'unicode'
+  [1m[36mSQL (22.7ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.3ms)[0m  CREATE TABLE "mailboxer_conversation_opt_outs" ("id" serial primary key, "unsubscriber_id" integer, "unsubscriber_type" character varying, "conversation_id" integer) 
+  [1m[36m (1.5ms)[0m  [1mCREATE  INDEX  "index_mailboxer_conversation_opt_outs_on_conversation_id" ON "mailboxer_conversation_opt_outs" USING btree ("conversation_id")[0m
+  [1m[35m (2.2ms)[0m  CREATE  INDEX  "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type" ON "mailboxer_conversation_opt_outs" USING btree ("unsubscriber_id", "unsubscriber_type")
+  [1m[36m (5.6ms)[0m  [1mCREATE TABLE "mailboxer_conversations" ("id" serial primary key, "subject" character varying DEFAULT '', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (10.4ms)[0m  CREATE TABLE "mailboxer_notifications" ("id" serial primary key, "type" character varying, "body" text, "subject" character varying DEFAULT '', "sender_id" integer, "sender_type" character varying, "conversation_id" integer, "draft" boolean DEFAULT 'f', "notification_code" character varying, "notified_object_id" integer, "notified_object_type" character varying, "attachment" character varying, "updated_at" timestamp NOT NULL, "created_at" timestamp NOT NULL, "global" boolean DEFAULT 'f', "expires" timestamp) 
+  [1m[36m (1.8ms)[0m  [1mCREATE  INDEX  "index_mailboxer_notifications_on_conversation_id" ON "mailboxer_notifications" USING btree ("conversation_id")[0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_mailboxer_notifications_on_notified_object_id_and_type" ON "mailboxer_notifications" USING btree ("notified_object_id", "notified_object_type")
+  [1m[36m (1.7ms)[0m  [1mCREATE  INDEX  "index_mailboxer_notifications_on_sender_id_and_sender_type" ON "mailboxer_notifications" USING btree ("sender_id", "sender_type")[0m
+  [1m[35m (1.8ms)[0m  CREATE  INDEX  "index_mailboxer_notifications_on_type" ON "mailboxer_notifications" USING btree ("type")
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "mailboxer_receipts" ("id" serial primary key, "receiver_id" integer, "receiver_type" character varying, "notification_id" integer NOT NULL, "is_read" boolean DEFAULT 'f', "trashed" boolean DEFAULT 'f', "deleted" boolean DEFAULT 'f', "mailbox_type" character varying(25), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.8ms)[0m  CREATE  INDEX  "index_mailboxer_receipts_on_notification_id" ON "mailboxer_receipts" USING btree ("notification_id")
+  [1m[36m (4.7ms)[0m  [1mCREATE  INDEX  "index_mailboxer_receipts_on_receiver_id_and_receiver_type" ON "mailboxer_receipts" USING btree ("receiver_id", "receiver_type")[0m
+  [1m[35m (6.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "name" character varying) 
+  [1m[36m (2.5ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")
+  [1m[36m (3.2ms)[0m  [1mALTER TABLE "mailboxer_conversation_opt_outs" ADD CONSTRAINT "mb_opt_outs_on_conversations_id"
+FOREIGN KEY ("conversation_id")
+  REFERENCES "mailboxer_conversations" ("id")
+[0m
+  [1m[35m (2.4ms)[0m  ALTER TABLE "mailboxer_notifications" ADD CONSTRAINT "notifications_on_conversation_id"
+FOREIGN KEY ("conversation_id")
+  REFERENCES "mailboxer_conversations" ("id")
+
+  [1m[36m (2.3ms)[0m  [1mALTER TABLE "mailboxer_receipts" ADD CONSTRAINT "receipts_on_notification_id"
+FOREIGN KEY ("notification_id")
+  REFERENCES "mailboxer_notifications" ("id")
+[0m
+  [1m[35m (2.7ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160322134147')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160322070219')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160322070937')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160322134145')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160322134146')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2016-05-24 12:02:55 +0200
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_nav.html.erb (13.7ms)
+Completed 200 OK in 16956ms (Views: 16922.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
