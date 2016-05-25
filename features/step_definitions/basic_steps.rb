@@ -27,15 +27,15 @@ Given(/^I click on the "([^"]*)" button$/) do |button|
 end
 
 Then(/^I should see "([^"]*)"$/) do |text|
-  expect(page).to have_text(text)
+  expect(page).to have_text()
 end
 
 Given(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
    fill_in(field, with: value)
 end
 
-Then(/^I should see a "([^"]*)" checkbox$/) do
-  ("input[type='checkbox']")
+Then(/^I should see a "([^"]*)" checkbox$/) do |checkbox|
+    find("input[type='checkbox']")
 end
 
 Then /^show me the page$/ do
