@@ -3,7 +3,16 @@ Given(/^there is a user with email "([^"]*)" and password "([^"]*)"$/) do |email
 end
 
 Given(/^I am on the "([^"]*)"$/) do |page|
-  visit root_path
+  case page
+  when "Home page" then
+     visit root_path
+   when "Sign up page" then
+     visit new_user_registration_path
+   when "Login page" then
+     visit new_user_session_path
+   when "Forgot password page" then
+     visit new_user_password_path
+  end
 end
 
 Then(/^I should be on the "([^"]*)"$/) do |page|

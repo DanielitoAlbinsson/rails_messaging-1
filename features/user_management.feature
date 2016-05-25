@@ -10,7 +10,7 @@ Scenario: Allows a visitor to see Sign up link
     Then I should see a "Sign up" link
 
 Scenario: Allows a visitor to access a registration page
-    Given I am on the "home page"
+    Given I am on the "Home page"
     And I click on the "Sign up" button
     Then I should be on the "Sign up page"
 
@@ -42,7 +42,8 @@ Scenario: Allows a visitor to register as a user
     Then I should see "Welcome! You have signed up successfully."
 
 Scenario: As a registered user
-    Given I am on the "home page"
+    Given I am on the "Home page"
+    Then show me the page
     And I click on the "Login" button
     And I fill in "Email" with "daniel@gmail.com"
     And I fill in "Password" with "Password"
@@ -77,7 +78,7 @@ Scenario: Allows a visitor see a link to the registration page, the forgotten pa
     And I should see a "Remember me" checkbox
 
 Scenario: So that I understand that I have logged in successfully
-    Given I am on the "home page"
+    Given I am on the "Home page"
     And I click on the "Login" button
     And I fill in "Email" with "daniel@gmail.com"
     And I fill in "Password" with "Password"
@@ -94,5 +95,52 @@ Scenario: So that I can access my account even if i forgot the password
     Then I should see "Send me reset password instructions"
     And I fill in "Email" with "daniel@gmail.com"
     And I click on the "Send me reset password instructions" button
-    Then show me the page
     Then I should see "You will receive an email with instructions on how to reset your password in a few minutes"
+
+Scenario: Forgotten password - email not found
+    Given I am on the "Forgot password page"
+    And I fill in "Email" with "test@hotmail.com"
+    And I click on the "Send me reset password instructions" button
+    Then I should see "Email not found"
+
+Scenario: Forgotten password - email blank
+    Given I am on the "Forgot password page"
+    And I fill in "Email" with ""
+    And I click on the "Send me reset password instructions" button
+    Then I should see "Email can't be blank"
+
+Scenario: Email must not be blank
+    Given I am on the "Sign up page"
+    And I fill in "Name" with "Testperson"
+    And I fill in "Email" with ""
+    And I fill in "Password" with "12345678"
+    And I fill in "Password confirmation" with "12345678"
+    And I click on the "Create" button
+    Then I should see "Email can't be blank"
+
+Scenario: Email must not be blank
+    Given I am on the "Sign up page"
+    And I fill in "Name" with "testperson"
+    And I fill in "Email" with "testperson@gmail.com"
+    And I fill in "Password" with ""
+    And I fill in "Password confirmation" with ""
+    And I click on the "Create" button
+    Then I should see "Password can't be blank"
+
+Scenario: Email must not be duplicate
+    Given I am on the "Sign up page"
+    And I fill in "Name" with "Testperson"
+    And I fill in "Email" with "daniel@gmail.com"
+    And I fill in "Password" with "12345678"
+    And I fill in "Password confirmation" with "12345678"
+    And I click on the "Create" button
+    Then I should see "Email has already been taken"
+
+Scenario: Name must not be duplicate
+    Given I am on the "Sign up page"
+    And I fill in "Name" with "Daniel"
+    And I fill in "Email" with "testperson@gmail.com"
+    And I fill in "Password" with "12345678"
+    And I fill in "Password confirmation" with "12345678"
+    And I click on the "Create" button
+    Then I should see "Name has already been taken"
