@@ -23,3 +23,7 @@ Scenario: Allows a visitor to access a login page
 Scenario: Allows a visitor to read a description of the applies
     Given I am on the "Home page"
     Then I should see "Craft Academy Mailboxer"
+
+Scenario: Allows a visitor to access the login page from the registration page
+    Given I am on the "Sign up page"
+    Then I should see a "Login" link
