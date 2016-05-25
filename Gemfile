@@ -12,6 +12,8 @@ gem 'chosen-rails'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'mailboxer'
+gem 'launchy'
+gem 'pry'
 
 group :development do
   gem 'web-console', '~> 2.0'
