@@ -33,6 +33,9 @@ Given(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
    fill_in(field, with: value)
 end
 
+Then(/^I should see a "([^"]*)" checkbox$/) do 
+    find("input[type='checkbox']")
+end
 
 Then /^show me the page$/ do
   save_and_open_page
