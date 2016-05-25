@@ -29,7 +29,8 @@ Scenario: Allows a visitor to access the login page from the sign up page
     Then I should see a "Login" link
 
 Scenario: Allows a visitor to register as a user
-    Given I am on the "Sign up page"
+    Given I am on the "Home page"
+    And I click on the "Sign up" button
     Then show me the page
     And I fill in "user_name" with "Jenny"
     And I fill in "user_email" with "jenny@gmail.com"
