@@ -3,7 +3,7 @@ Feature:  As a visitor
     I would like to see a 'register' button on the home page.
 
 Background:
-Given there is a User with Email "daniel@gmail.com" and Password "Password"
+    Given there is a user with email "daniel@gmail.com" and password "Password"
 
 Scenario: Allows a visitor to see Sign up link
     Given I am on the "Home page"
@@ -41,11 +41,10 @@ Scenario: Allows a visitor to register as a user
     And I click on the "Create" button
     Then I should see "Welcome! You have signed up successfully."
 
-    Scenario: As a registered user
-      Given I am on the "home page"
-      And I click on the "Login" button
-      And I fill in "Email" with "daniel@gmail.com"
-      And I fill in "Password" with "Password"
-      And I click on the "Login" button
-      When I pry
-      Then I should see "Signed in successfully"
+Scenario: As a registered user
+    Given I am on the "home page"
+    And I click on the "Login" button
+    And I fill in "Email" with "daniel@gmail.com"
+    And I fill in "Password" with "Password"
+    And I click on the "Login" button
+    Then I should see "Signed in successfully"

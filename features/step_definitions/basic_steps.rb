@@ -1,8 +1,5 @@
-require 'database_cleaner'
-Given(/^there is a User with Email "([^"]*)" and Password "([^"]*)"$/) do |email, password|
- DatabaseCleaner.strategy = :truncation
- DatabaseCleaner.clean
- @user = User.create(Email: email, Password: password)
+Given(/^there is a user with email "([^"]*)" and password "([^"]*)"$/) do |email, password|
+  FactoryGirl.create(:user, email: email, password: password)
 end
 
 Given(/^I am on the "([^"]*)"$/) do |page|
@@ -29,7 +26,7 @@ Given(/^I click on the "([^"]*)" button$/) do |button|
 end
 
 Then(/^I should see "([^"]*)"$/) do |text|
-  expect(page).to have_text("Craft Academy Mailboxer")
+  expect(page).to have_text()
 end
 
 Given(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
