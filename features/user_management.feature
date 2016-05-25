@@ -48,3 +48,23 @@ Scenario: As a registered user
     And I fill in "Password" with "Password"
     And I click on the "Login" button
     Then I should see "Signed in successfully"
+
+  Scenario: password leangt validation
+    Given I am on the "Home page"
+    And I click on the "Sign up" button
+    And I fill in "Name" with "Jenny"
+    And I fill in "user_email" with "jenny@gmail.com"
+    And I fill in "user_password" with "1234567"
+    And I fill in "user_password_confirmation" with "1234567"
+    And I click on the "Create" button
+    Then I should see "Password is too short"
+
+    Scenario: Diffrent passwords
+      Given I am on the "Home page"
+      And I click on the "Sign up" button
+      And I fill in "Name" with "Jenny"
+      And I fill in "user_email" with "jenny@gmail.com"
+      And I fill in "user_password" with "12345678"
+      And I fill in "user_password_confirmation" with "1234567"
+      And I click on the "Create" button
+      Then I should see "Password confirmation doesn't match Password"
