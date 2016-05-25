@@ -2,7 +2,10 @@ Feature:  As a visitor
     So that I can register in order to log in to the system and send and receive messages
     I would like to see a 'register' button on the home page.
 
-Scenario: Allows a visitor to access a registration page
+Background:
+Given there is a User with Email "daniel@gmail.com" and Password "Password"
+
+Scenario: Allows a visitor to see Sign up link
     Given I am on the "Home page"
     Then I should see a "Sign up" link
 
@@ -31,10 +34,18 @@ Scenario: Allows a visitor to access the login page from the sign up page
 Scenario: Allows a visitor to register as a user
     Given I am on the "Home page"
     And I click on the "Sign up" button
-    Then show me the page
-    And I fill in "user_name" with "Jenny"
+    And I fill in "Name" with "Jenny"
     And I fill in "user_email" with "jenny@gmail.com"
     And I fill in "user_password" with "12345678"
     And I fill in "user_password_confirmation" with "12345678"
     And I click on the "Create" button
     Then I should see "Welcome! You have signed up successfully."
+
+    Scenario: As a registered user
+      Given I am on the "home page"
+      And I click on the "Login" button
+      And I fill in "Email" with "daniel@gmail.com"
+      And I fill in "Password" with "Password"
+      And I click on the "Login" button
+      When I pry
+      Then I should see "Signed in successfully"
