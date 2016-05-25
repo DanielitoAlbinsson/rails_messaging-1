@@ -3,5 +3,23 @@ Feature:  As a visitor
     I would like to see a 'register' button on the home page.
 
 Scenario: Allows a visitor to access a registration page
+    Given I am on the "Home page"
+    Then I should see a "Sign up" link
+
+Scenario: Allows a visitor to access a registration page
     Given I am on the "home page"
-    Then I should see a registration button.
+    And I click on the "Sign up" button
+    Then I should be on the "Sign up page"
+
+Scenario: Allows a visitor to see a login link
+    Given I am on the "Home page"
+    Then I should see a "Login" link
+
+Scenario: Allows a visitor to access a login page
+    Given I am on the "Home page"
+    And I click on the "Login" button
+    Then I should be on the "Login page"
+
+Scenario: Allows a visitor to read a description of the applies
+    Given I am on the "Home page"
+    Then I should see "Craft Academy Mailboxer"
