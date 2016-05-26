@@ -1,6 +1,6 @@
 Feature:  As a visitor
     So that I can register in order to log in to the system and send and receive messages
-    I would like to see a 'register' button on the home page.
+    i want to be able to sign up, log in, and reset my pasword
 
 Background:
     Given there is a user with email "daniel@gmail.com" and password "Password"
