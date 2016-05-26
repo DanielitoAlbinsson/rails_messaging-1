@@ -43,11 +43,10 @@ Scenario: Allows a visitor to register as a user
 
 Scenario: As a registered user
     Given I am on the "Home page"
-    Then show me the page
     And I click on the "Login" button
     And I fill in "Email" with "daniel@gmail.com"
     And I fill in "Password" with "Password"
-    And I click on the "Login" button
+    And I click on the "Log in" button
     Then I should see "Signed in successfully"
 
 Scenario: password leangt validation
@@ -92,7 +91,6 @@ Scenario: So that I can access my account even if i forgot the password
     And I click on the "Login" button
     Then I should see a "Forgot your password?" link
     And I click on the "Forgot your password?" button
-    Then I should see "Send me reset password instructions"
     And I fill in "Email" with "daniel@gmail.com"
     And I click on the "Send me reset password instructions" button
     Then I should see "You will receive an email with instructions on how to reset your password in a few minutes"

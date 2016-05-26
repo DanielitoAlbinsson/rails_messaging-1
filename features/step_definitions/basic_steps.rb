@@ -36,7 +36,7 @@ Given(/^I click on the "([^"]*)" button$/) do |button|
 end
 
 Then(/^I should see "([^"]*)"$/) do |text|
-  expect(page).to have_text()
+  expect(page).to have_text(text)
 end
 
 Given(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
