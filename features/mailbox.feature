@@ -43,3 +43,14 @@ Scenario: Display form for composing email
     And I am on the "Inbox page"
     And I click on the "View" button
     Then I should see "Här kommer texten"
+
+Scenario: Display sent messages in sent messages folder
+    Given I am logged in as "Daniel"
+    And I am on the "Inbox page"
+    And I click on the "Compose" button
+    And I select "Jenny" from "conversation[recipients][]"
+    And I fill in "conversation[subject]" with "Hej hej"
+    And I fill in "conversation[body]" with "Här kommer texten"
+    And I click on the "Send Message" button
+    And I click on the "Sent" button
+    Then I should see "Här kommer texten"
