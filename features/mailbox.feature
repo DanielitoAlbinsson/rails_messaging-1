@@ -25,3 +25,10 @@ Scenario: I would like to see my mailbox display
     And I should see a "Compose" link
     And I should see a "Sent" link
     And I should see a "Trash" link
+
+
+Scenario: I would like to Logout
+  Given I am logged in as "Daniel"
+  And I am on the "Inbox page"
+  And I click on the "Logout" button
+  Then I should see "Signed out"
