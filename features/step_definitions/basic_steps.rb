@@ -12,6 +12,8 @@ Given(/^I am on the "([^"]*)"$/) do |page|
      visit new_user_session_path
    when "Forgot password page" then
      visit new_user_password_path
+   when "Inbox page" then
+     visit mailbox_inbox_path
   end
 end
 
@@ -23,6 +25,8 @@ Then(/^I should be on the "([^"]*)"$/) do |page|
      expect(current_path).to eq new_user_registration_path
    when "Login page" then
      expect(current_path).to eq new_user_session_path
+   when "Inbox page" then
+     expect(current_path).to eq mailbox_inbox_path
   end
 end
 

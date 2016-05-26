@@ -18,3 +18,7 @@ Then(/^I should have "([^"]*)" messages$/) do |expected_count|
   count = @receiver.mailbox.inbox.count
   expect(count).to eq expected_count.to_i
 end
+
+Then(/^I should see messages I have received$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
