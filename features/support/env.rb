@@ -1,3 +1,5 @@
+require 'coveralls'
+Coveralls.wear!('rails')
 
 require 'cucumber/rails'
 ActionController::Base.allow_rescue = false
