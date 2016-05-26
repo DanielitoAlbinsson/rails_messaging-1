@@ -590,16 +590,16 @@
         1,
         null,
         1,
-        30,
-        30,
+        31,
+        31,
         null,
         null
       ],
       "/Users/jennyfurstenbach/Desktop/Jenny/Craftacademy/rails_messaging/app/helpers/application_helper.rb": [
         1,
         1,
+        6,
         5,
-        4,
         0,
         0,
         0,
@@ -688,6 +688,6 @@
         null
       ]
     },
-    "timestamp": 1464302076
+    "timestamp": 1464302295
   }
 }

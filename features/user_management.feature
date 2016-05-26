@@ -146,5 +146,5 @@ Scenario: Name must not be duplicate
 Scenario: I would like to Logout
     Given I am logged in as "Daniel"
     And I am on the "Inbox page"
-    Then I click on the "Logout" link
+    And I click on the "Logout" button
     Then I should see "Signed out"
