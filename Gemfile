@@ -23,7 +23,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem "codeclimate-test-reporter", group: :test, require: nil

@@ -1,5 +1,5 @@
-Given(/^there is a user with email "([^"]*)" and password "([^"]*)"$/) do |email, password|
-  FactoryGirl.create(:user, email: email, password: password)
+Given(/^there is a user with name "([^"]*)", email "([^"]*)" and password "([^"]*)"$/) do |name, email, password|
+  FactoryGirl.create(:user, name: name, email: email, password: password)
 end
 
 Given(/^I am on the "([^"]*)"$/) do |page|
@@ -37,6 +37,10 @@ end
 
 Given(/^I click on the "([^"]*)" button$/) do |button|
   click_link_or_button button
+end
+
+Then(/^I click on the "([^"]*)" link$/) do |link|
+  click(link)
 end
 
 Then(/^I should see "([^"]*)"$/) do |text|

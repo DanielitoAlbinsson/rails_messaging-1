@@ -3,7 +3,7 @@ Feature:  As a visitor
     i want to be able to sign up, log in, and reset my pasword
 
 Background:
-    Given there is a user with email "daniel@gmail.com" and password "Password"
+    Given there is a user with name "Daniel", email "daniel@gmail.com" and password "Password"
 
 Scenario: Allows a visitor to see Sign up link
     Given I am on the "Home page"
@@ -142,3 +142,9 @@ Scenario: Name must not be duplicate
     And I fill in "Password confirmation" with "12345678"
     And I click on the "Create" button
     Then I should see "Name has already been taken"
+
+Scenario: I would like to Logout
+    Given I am logged in as "Daniel"
+    And I am on the "Inbox page"
+    Then I click on the "Logout" link
+    Then I should see "Signed out"

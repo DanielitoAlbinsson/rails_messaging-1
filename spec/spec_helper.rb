@@ -1,9 +1,11 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
-
+require 'factory_girl_rails'
+FactoryGirl.find_definitions 
 require 'rubygems'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

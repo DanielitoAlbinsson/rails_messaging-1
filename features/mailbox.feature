@@ -7,7 +7,7 @@ Given following users exists
 | Jenny  | jenny@ranom.com   | password |
 | Daniel | daniel@random.com | password |
 
-Scenario:I would like to send a message
+Scenario: Send and receive a message
     Given I am logged in as "Jenny"
     And I am on the "Home page"
     And I send a mail to "Daniel"
@@ -18,7 +18,7 @@ Scenario:I would like to send a message
     And I click on the "View" button
     Then I should see "vi är grymma"
 
-Scenario: I would like to see my mailbox display
+Scenario: Mailbox display
     Given I am logged in as "Daniel"
     And I am on the "Inbox page"
     Then I should see a "Inbox" link
@@ -26,9 +26,20 @@ Scenario: I would like to see my mailbox display
     And I should see a "Sent" link
     And I should see a "Trash" link
 
-
-Scenario: I would like to Logout
-  Given I am logged in as "Daniel"
-  And I am on the "Inbox page"
-  And I click on the "Logout" button
-  Then I should see "Signed out"
+Scenario: Display form for composing email
+    Given I am logged in as "Daniel"
+    And I am on the "Inbox page"
+    And I click on the "Compose" button
+    Then I should be on the "Compose page"
+    And I should see "Recipients"
+    And I should see "Subject"
+    And I should see "Message"
+    And I select "Jenny" from "conversation[recipients][]"
+    And I fill in "conversation[subject]" with "Hej hej"
+    And I fill in "conversation[body]" with "Här kommer texten"
+    And I click on the "Send Message" button
+    Then I should see "Your message was successfully sent!"
+    Given I am logged in as "Jenny"
+    And I am on the "Inbox page"
+    And I click on the "View" button
+    Then I should see "Här kommer texten"
