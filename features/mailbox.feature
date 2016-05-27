@@ -54,3 +54,21 @@ Scenario: Display sent messages in sent messages folder
     And I click on the "Send Message" button
     And I click on the "Sent" button
     Then I should see "Här kommer texten"
+
+Scenario: Move deleted messages to the trash folder
+    Given I am logged in as "Daniel"
+    And I am on the "Inbox page"
+    And I click on the "Compose" button
+    And I select "Jenny" from "conversation[recipients][]"
+    And I fill in "conversation[subject]" with "Hej hej"
+    And I fill in "conversation[body]" with "Här kommer texten"
+    And I click on the "Send Message" button
+    Then I should see "Your message was successfully sent!"
+    Given I am logged in as "Jenny"
+    And I am on the "Inbox page"
+    And I click on the "View" button
+    Then I should see "Här kommer texten"
+    And I click on the "Move to trash" button
+    And I confirm popup
+    And I click on the "Trash" button
+    Then I should see "Här kommer texten"
