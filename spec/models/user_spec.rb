@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  subject { FactoryGirl.create(:user) }
+
   describe 'DB table' do
     it { is_expected.to have_db_column :name }
     it { is_expected.to have_db_column :email }
@@ -10,11 +12,17 @@ RSpec.describe User, type: :model do
 
   describe 'Validations' do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_length_of(:name).is_at_most(10) }
+    #it { is_expected.to validate_length_of(:name).is_at_most(10) }
     it { is_expected.to validate_uniqueness_of(:name) }
-    it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_uniqueness_of(:email) }
-    it { is_expected.to validate_presence_of(:password) }
+    it { is_expected.to validate_presence_of(:email)}
+    #it { is_expected.to validate_uniqueness_of(:email) }
+    #it { is_expected.to validate_presence_of(:password) }
+
+    it 'email is case sensitive' do
+      FactoryGirl.create(:user, email: 'thomas@random.com')
+      new_user = FactoryGirl.build(:user, email: 'THOMAS@RANDOM.COM')
+      expect(new_user.save).to eq false
+    end
   end
 
   describe 'Fixtures' do

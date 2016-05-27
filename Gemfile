@@ -26,8 +26,9 @@ group :development, :test do
   gem 'factory_girl_rails', require: false
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem "codeclimate-test-reporter", group: :test, require: nil
+  gem 'codeclimate-test-reporter', group: :test, require: nil
   gem 'coveralls', require: false
+  gem 'faker'
 end
 
 group :production do

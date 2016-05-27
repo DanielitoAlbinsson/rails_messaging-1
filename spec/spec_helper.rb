@@ -1,7 +1,7 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
-require 'factory_girl_rails'
-FactoryGirl.find_definitions
+#require 'factory_girl_rails'
+#FactoryGirl.find_definitions
 require 'rubygems'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
