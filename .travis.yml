@@ -11,7 +11,7 @@ deploy:
   provider: heroku
   api_key:
     secure: BtB3+VWpr0Ta9Va39ckWKbVXBXEwrqrkKfV5AhcAk8nSYzYp86ZE0VppnQpL39Fh2y0/A5CrUW9ao5/uZMAXWvrfhTEVSiF0Qt4rEj/P1K9qM4IJHqN90dG1lVfa2suo77y2L+d+3giEcHAg/HUZTmr+IK+ZHigO0iPxZvrp3yDv+Dk7YTZD77/eEo82D0Jiaaj2mZANBtRrnIlevTHPiQqu/oeVfiiyWFggK4f1NVayI2PJS9cGdjZ6GDCdMfepUBLKViv4JtMX3xjmiu6bqhCMfdylHrp85AqxP2PbYHPOyzmPSeOgazKXeRB78cg0X3nwv4+TwlapjhcGzFEVGupnS1iLqKth3//XMhiAKmjiICsu8nD/QmRqatxCJWcHbc/mYySGIkbtsgwW2yAs0LpRkOR+xaOFpG0zzNnCBr2vsx13ZaUL3AGVWyIeSJI8M2k4Kpk2pDY678pIYL0T/vPuKDDCN8DDpK8RXWXADUgq3Q6Q1hO9Rfi8HvAb21uMxT04lWl5qeMCYvNHJqKHmHedmO+GIJfdYzdhVEnH9PUr8C2uHHkxG2vEiP33Re0VQDprZi9Ku+BmzNR+V34eoZRatizUynRaPiT1jxXTu11nOrbxd01O+bS6I4nPYtbQ4D56g/d20s7jfSgs3sUvsP2DK1Eg/KWoFkczIWNQx2A=
-  app: rails_messaging
+  app: immense-brook-59895
   on:
     repo: furstenbach/rails_messaging
 sudo: required
