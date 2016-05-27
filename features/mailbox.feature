@@ -69,6 +69,5 @@ Scenario: Move deleted messages to the trash folder
     And I click on the "View" button
     Then I should see "Här kommer texten"
     And I click on the "Move to trash" button
-    And I confirm popup
     And I click on the "Trash" button
     Then I should see "Här kommer texten"
