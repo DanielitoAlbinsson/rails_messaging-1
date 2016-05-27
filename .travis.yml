@@ -14,3 +14,4 @@ deploy:
   app: rails_messaging
   on:
     repo: furstenbach/rails_messaging
+sudo: required
